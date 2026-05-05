@@ -13,22 +13,29 @@ Feature	Description
 Real Document Embedding	Paste any text → Ollama embeds it with nomic-embed-text (768D)
 RAG Pipeline	Ask questions about your documents → HNSW retrieves context → local LLM answers
 Full REST API	CRUD endpoints: insert, delete, search, benchmark, hnsw-info
+
 How It Works
+
 Your Text
     │
     ▼
+    
 Ollama (nomic-embed-text)          ← converts text to a 768-dimensional vector
     │
     ▼
+    
 HNSW Index (C++)                   ← indexes the vector in a multilayer graph
     │
     ▼
+    
 Semantic Search                    ← finds nearest neighbors in vector space
     │
     ▼
+    
 Ollama (llama3.2)                  ← reads retrieved chunks, generates an answer
     │
     ▼
+    
 Answer
 HNSW (Hierarchical Navigable Small World) is the same algorithm used by Pinecone, Weaviate, Chroma, and Milvus. It builds a multilayer graph where each layer is progressively sparser — searches start at the top layer and zoom in, achieving O(log N) complexity instead of O(N) for brute force.
 
