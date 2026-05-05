@@ -17,22 +17,27 @@ Full REST API	CRUD endpoints: insert, delete, search, benchmark, hnsw-info
 How It Works
 
 Your Text
+
     │
     ▼
     
 Ollama (nomic-embed-text)          ← converts text to a 768-dimensional vector
+
     │
     ▼
     
 HNSW Index (C++)                   ← indexes the vector in a multilayer graph
+
     │
     ▼
     
 Semantic Search                    ← finds nearest neighbors in vector space
+
     │
     ▼
     
 Ollama (llama3.2)                  ← reads retrieved chunks, generates an answer
+
     │
     ▼
     
